@@ -26,7 +26,7 @@ def main():
         credentials=creds
     )
 
-    query = 'subject:"ETHackathon" has:attachment filename:pdf'
+    query = 'subject:"ETHackathon" has:attachment filename:pdf newer_than:30d'
 
     messages = get_latest_messages(
         service,
