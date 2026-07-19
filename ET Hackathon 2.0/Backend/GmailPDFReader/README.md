@@ -46,7 +46,7 @@ python main.py
 ## Gmail Query
 
 ```python
-query = 'subject:"[ETHackathon]" has:attachment filename:pdf'
+query = 'subject:"ETHackathon" has:attachment filename:pdf newer_than:30d'
 ```
 
 Only emails matching this query will be processed.
