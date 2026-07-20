@@ -1,5 +1,5 @@
 from googleapiclient.discovery import build
-
+from backend_uploader import upload_pdf
 from auth import authenticate
 from gmail_reader import (
     get_latest_messages,
@@ -80,8 +80,18 @@ def main():
 
         print(f"Saved to: {file_path}")
 
-        save_processed_id(message_id)
-        processed_ids.add(message_id)
+        try:
+            result = upload_pdf(file_path)
+
+            print(f"✅ Uploaded: {pdf['filename']}")
+            print(result)
+
+            # Mark as processed only after successful upload
+            save_processed_id(message_id)
+            processed_ids.add(message_id)
+
+        except Exception as e:
+            print(f"❌ Upload failed: {e}")
 
     print("\nDone!")
 
