@@ -26,6 +26,7 @@ def upload_pdf(file_path, token=None):
             timeout=TIMEOUT
         )
 
-    response.raise_for_status()
+        print("Status Code:", response.status_code)
+        print("Response:", response.text)
 
-    return response.json()
+        response.raise_for_status()
